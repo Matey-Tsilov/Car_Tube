@@ -1,4 +1,6 @@
 const Catalog = () => {
+
+  
     return (<section id="car-listings">
     <h1>Car Listings</h1>
     <div className="listings">
