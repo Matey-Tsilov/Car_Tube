@@ -1,8 +1,25 @@
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+
+import { getById } from "../../api/data"
+
+
+
 const Details = () => {
-    return (<section id="listing-details">
+
+  const {id} = useParams()
+
+  const [car, setCar] = useState(null)
+
+  useEffect(() => {
+     getById(id).then(c => setCar(c))
+  }, [id])
+
+    return (
+    <section id="listing-details">
     <h1>Details</h1>
     <div className="details-info">
-      <img src="/images/audia3.jpg" />
+      <img src="/images/audia3.jpg" alt="car"/>
       <hr />
       <ul className="listing-props">
         <li><span>Brand:</span>Audi</li>
@@ -20,7 +37,8 @@ const Details = () => {
         <a href="/" className="button-list"> Delete </a>
       </div>
     </div>
-  </section>)
+  </section>
+  )
 }
 
 export default Details
