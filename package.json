@@ -15,7 +15,6 @@
         "react": "18.2.0"
     },
     "devDependencies": {
-        "http-server": "0.12.3"
-       
+        "http-server": "^0.12.3"
     }
 }
