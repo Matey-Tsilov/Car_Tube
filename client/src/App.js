@@ -8,29 +8,32 @@ import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
 import Search from "./components/Search/Search";
 import Details from "./components/Catalog/Details";
-
-
-
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  return (<>
-<Header />
-  
-<main id="site-content">
+  return (
+    <>
+      <Header />
 
-  <Home />
-  <Login />
-  <Register />
-  <Catalog />
-  <Create />
-  <Edit />
-  <Search />
-  <Details />
+      <main id="site-content">
+        <Routes>
 
-</main>
-<Footer />
-</>
-);
+          <Route path = "/" element={<Home />} />
+          <Route path = "/user/login" element={<Login />} />
+          <Route path = "/user/register" element={<Register />} />
+          <Route path = "/cars" element={<Catalog />} />
+          <Route path = "/create" element={<Create />} />
+          <Route path = "/edit/:id" element={<Edit />} />
+          <Route path = "/cars/:id" element={<Details />} />
+          <Route path = "/search" element={<Search />} />
+
+        </Routes>
+        
+      </main>
+
+      <Footer />
+    </>
+  );
 }
 
 export default App;
