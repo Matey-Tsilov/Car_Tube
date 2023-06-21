@@ -1,4 +1,4 @@
-import * as fetchApi from '../api/data'
+import * as fetchApi from '../api/api'
 
 const ep = {
     getAll: '/data/cars',

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
-import { getById } from "../../api/data"
+import { getById } from "../../services/carService"
 
 
 
@@ -33,8 +33,8 @@ const Details = () => {
         optio debitis repellat porro sapiente.
       </p>
       <div className="listings-buttons">
-        <a href="/" className="button-list"> Edit </a>
-        <a href="/" className="button-list"> Delete </a>
+        <Link to={`{/edit/${car._id}}`} className="button-list"> Edit </Link>
+        <Link to={`{/delete/${car._id}}`} className="button-list"> Delete </Link>
       </div>
     </div>
   </section>
