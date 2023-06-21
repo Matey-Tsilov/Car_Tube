@@ -1,7 +1,7 @@
 //import { notify } from "../common/notify.js"
 import { getUserData, setUserData, clearUserData } from "./util.js"
 
-const host = "http://localhost:3000"
+const host = "http://localhost:3030"
 
 async function request(url, options) {
     
@@ -67,9 +67,9 @@ async function del(url) {
     return request(url, createOptions('delete'))
 }
 
-async function login(email, password) {
+async function login(username, password) {
 
-    const serverRes = await post('/users/login', {email, password})
+    const serverRes = await post('/users/login', {username, password})
     console.log(serverRes);
     
     // const userData = {
