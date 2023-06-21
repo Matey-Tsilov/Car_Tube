@@ -8,6 +8,8 @@ import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
 import Search from "./components/Search/Search";
 import Details from "./components/Catalog/Details";
+import MyListings from "./components/MyListings/MyListings";
+
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -22,10 +24,11 @@ function App() {
           <Route path = "/user/login" element={<Login />} />
           <Route path = "/user/register" element={<Register />} />
           <Route path = "/cars" element={<Catalog />} />
-          <Route path = "/create" element={<Create />} />
-          <Route path = "/edit/:id" element={<Edit />} />
+          <Route path = "/cars/create" element={<Create />} />
+          <Route path = "/cars/edit/:id" element={<Edit />} />
           <Route path = "/cars/:id" element={<Details />} />
           <Route path = "/search" element={<Search />} />
+          <Route path = "/my-listings" element={<MyListings />} />
 
         </Routes>
         
