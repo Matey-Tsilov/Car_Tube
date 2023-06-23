@@ -8,7 +8,8 @@ const Catalog = () => {
   const [cars, setCars] = useState([])
 
   useEffect(() => {
-   getAll().then(all => setCars(all))
+   getAll()
+   .then(all => setCars(all))
   }, [])
 
     return (<section id="car-listings">

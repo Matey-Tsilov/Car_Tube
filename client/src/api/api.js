@@ -18,18 +18,12 @@ async function request(url, options) {
         // }
         // return res.json()
 
-        //за стари версии на сървъра:
-        try {
-            return await res.json()
-        } catch (error) {
-            return res
-        }
-
+        return await res.json()
 
     } catch (err) {
-        alert(err.message)
+        //alert(err.message)
         //notify(err.message)
-        //throw err
+        throw err
     }
     
 }
@@ -47,8 +41,9 @@ function createOptions(method = 'get', data) {
         options.body = JSON.stringify(data)
     }
     const userData = getUserData()
+
     if (userData) {
-        options.headers['X-Authorization'] = userData.token
+        options.headers['X-Authorization'] = userData.accessToken
     }
     
     return options

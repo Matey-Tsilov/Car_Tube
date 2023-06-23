@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import * as authApi from "../../services/authSrvice";
-import { useState } from "react";
+import { UserContext } from "../../Contexts/UserContext";
 
 const Login = () => {
+  const {setUser} = useContext(UserContext)
+  const navigate = useNavigate()
+
   const [inputs, setInputs] = useState({
     username: null,
     password: null,
@@ -10,7 +15,13 @@ const Login = () => {
 
   const logInSubmit = (e) => {
     e.preventDefault();
-    authApi.login(inputs);
+
+    authApi.login(inputs)
+    .then((res) => {
+      setUser(res)
+      navigate('/cars')
+    })
+    .catch(err => alert(err.message))
   };
 
   const loginFormHandler = (e) => {
