@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom"
+import { useContext } from "react";
 
 import { UserContext } from "../../Contexts/UserContext";
-import { useContext } from "react";
+import * as authApi from '../../services/authSrvice'
 
 
 const Header = () => {
-  const {user} = useContext(UserContext)
+  const {user, setUser} = useContext(UserContext)
+
+  const logoutUser = () => {
+      authApi.logout()
+      setUser({})
+  }
 
     return (<header>
         <nav>
@@ -13,7 +19,7 @@ const Header = () => {
           <Link to="/cars">All Listings</Link>
           <Link to="/search">By Year</Link>
           {
-          user == {}
+          Object.keys(user) == 0
 
           ? <div id="guest">
             <Link to="/user/login">Login</Link>
@@ -24,7 +30,7 @@ const Header = () => {
             <Link>Welcome username</Link>
             <Link to="/my-listings">My Listings</Link>
             <Link to="/cars/create">Create Listing</Link>
-            <Link to="/">Logout</Link>
+            <Link to="/" onClick={logoutUser}>Logout</Link>
           </div>
           }
         </nav>
