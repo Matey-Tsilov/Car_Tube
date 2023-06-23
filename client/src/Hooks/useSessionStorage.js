@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { clearUserData, getUserData, setUserData } from '../api/util';
 
-export const useSessionStorage = (defaultValue) => {
+export const useSessionStorage = (defaultUser) => {
+  //Towa se izpylnqwa edinstweno i samo pyrwiq pyt pri zarejdane!
     const [curUser, setCurUser] = useState(() => {
-         return getUserData() || defaultValue;
+         const storedUser = getUserData()
+
+         return storedUser || defaultUser;
     })
 
     const setSessionStorage = (value) => {
-      if (value == {}) {
+      if (JSON.stringify(value) == "{}") {
         //otherwise when doing a get request right after for catalog page =>
         //getUserData() would return {}, which it will automaticly parse => 
         //JSON.error

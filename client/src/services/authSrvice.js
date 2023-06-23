@@ -3,10 +3,14 @@ import { clearUserData } from '../api/util'
 
 export async function login(userData) {
 
-    const serverRes = await fetchApi.post('/users/login', userData)
+const userLogIn = {
+    username: userData.username,
+    password: userData.password
+}
+    const serverRes = await fetchApi.post('/users/login', userLogIn)
+    console.log(serverRes);
 
     return serverRes
-
 }
 
 // export async function register(userData) {
@@ -26,7 +30,6 @@ export async function login(userData) {
 
 // }
 
-export async function logout() {
-    await fetchApi.get('/users/logout')
-    clearUserData()
+export function logout() {
+    fetchApi.get('/users/logout')
 }

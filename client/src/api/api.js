@@ -13,9 +13,10 @@ async function request(url, options) {
         throw new Error(problem.message)
         }
 
-        // if (res.status == 204) {
-        //     return res
-        // }
+         if (res.status == 204) {
+            console.log(res);
+             return res
+        }
         // return res.json()
 
         return await res.json()
@@ -41,6 +42,7 @@ function createOptions(method = 'get', data) {
         options.body = JSON.stringify(data)
     }
     const userData = getUserData()
+    
     if (userData) {
         options.headers['X-Authorization'] = userData.accessToken
     }
