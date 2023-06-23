@@ -13,6 +13,8 @@ import MyListings from "./components/MyListings/MyListings";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const [user, setUser] = useSessionStorage({})
+  
   return (
     <>
       <Header />
