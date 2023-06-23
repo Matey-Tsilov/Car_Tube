@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getUserData, setUserData } from '../api/util';
+import { clearUserData, getUserData, setUserData } from '../api/util';
 
 export const useSessionStorage = (defaultValue) => {
     const [curUser, setCurUser] = useState(() => {
@@ -7,7 +7,14 @@ export const useSessionStorage = (defaultValue) => {
     })
 
     const setSessionStorage = (value) => {
-      setUserData(value)
+      if (value == {}) {
+        //otherwise when doing a get request right after for catalog page =>
+        //getUserData() would return {}, which it will automaticly parse => 
+        //JSON.error
+        clearUserData()
+      }else {
+        setUserData(value)
+      }
       setCurUser(value)
     }
 
