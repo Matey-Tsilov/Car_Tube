@@ -26,7 +26,7 @@ const Details = () => {
       </ul>
       <p className="description-para">{car.description}</p>
       <div className="listings-buttons">
-        <Link to={`/edit/${car._id}`} className="button-list"> Edit </Link>
+        <Link to={`/cars/edit/${car._id}`} className="button-list"> Edit </Link>
         <Link to={`/delete/${car._id}`} className="button-list"> Delete </Link>
       </div>
     </div>

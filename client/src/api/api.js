@@ -67,52 +67,7 @@ async function del(url) {
     return request(url, createOptions('delete'))
 }
 
-async function login(username, password) {
-
-    const serverRes = await post('/users/login', {username, password})
-    console.log(serverRes);
-    
-    // const userData = {
-    //     email: serverRes.email, 
-    //     password: serverRes.password,
-    //     token: serverRes.accessToken,
-    //     gender: serverRes.gender,
-    //     username: serverRes.username,
-    //     id: serverRes._id
-    // }
-    
-    //така ще можем по-лесно да взимаме колко миима е написал, за да визуализираме бройката в userProfile view
-    //работи само при стари версии на сървъра!//await get(`/data/memes?where=_ownerId%3D%22${userData.id}%22&count`)
-    // setUserData(userData)
-
-}
-
-async function register(username, email, password, gender) {
-
-    const serverRes = await post('/users/register', {username, email, password, gender})
-    
-    const userData = {
-        email: serverRes.email, 
-        password: serverRes.password,
-        token: serverRes.accessToken,
-        gender: serverRes.gender,
-        username: serverRes.username,
-        id: serverRes._id
-    }
-    //така ще можем по-лесно да взимаме колко миима е написал, за да визуализираме бройката в userProfile view
-    setUserData(userData)
-
-}
-
-async function logout() {
-    await get('/users/logout')
-    clearUserData()
-}
-
 export {
-    login,
-    logout,
-    register,
     get,
     post,
     put,
