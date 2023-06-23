@@ -3,7 +3,7 @@ import { getUserData, setUserData } from '../api/util';
 
 export const useSessionStorage = (defaultValue) => {
     const [curUser, setCurUser] = useState(() => {
-         return defaultValue || getUserData();
+         return getUserData() || defaultValue;
     })
 
     const setSessionStorage = (value) => {
