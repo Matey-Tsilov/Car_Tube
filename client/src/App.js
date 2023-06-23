@@ -12,11 +12,15 @@ import MyListings from "./components/MyListings/MyListings";
 
 import { Routes, Route } from "react-router-dom";
 
+import { UserContext } from "./Contexts/UserContext";
+import { useSessionStorage } from "./Hooks/useSessionStorage";
+
 function App() {
   const [user, setUser] = useSessionStorage({})
-  
+
   return (
     <>
+    <UserContext.Provider value={user}>
       <Header />
 
       <main id="site-content">
@@ -37,7 +41,9 @@ function App() {
       </main>
 
       <Footer />
+      </UserContext.Provider>
     </>
+    
   );
 }
 
