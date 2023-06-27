@@ -1,31 +1,102 @@
-const Create = () => {
-    return (<section id="create-listing">
-    <div className="container">
-      <form id="create-form">
-        <h1>Create Car Listing</h1>
-        <p>Please fill in this form to create an listing.</p>
-        <hr />
-        <p>Car Brand</p>
-        <input type="text" placeholder="Enter Car Brand" name="brand" />
-        <p>Car Model</p>
-        <input type="text" placeholder="Enter Car Model" name="model" />
-        <p>Description</p>
-        <input type="text" placeholder="Enter Description" name="description" />
-        <p>Car Year</p>
-        <input type="number" placeholder="Enter Car Year" name="year" />
-        <p>Car Image</p>
-        <input type="text" placeholder="Enter Car Image" name="imageUrl" />
-        <p>Car Price</p>
-        <input type="number" placeholder="Enter Car Price" name="price" />
-        <hr />
-        <input
-          type="submit"
-          className="registerbtn"
-          defaultValue="Create Listing"
-        />
-      </form>
-    </div>
-  </section>)
-}
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default Create
+import { onInputChange } from "../../api/controlledForm";
+import * as carService from "../../services/carService";
+
+const Create = () => {
+  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({
+    brand: "",
+    model: "",
+    description: "",
+    year: "",
+    imageUrl: "",
+    price: "",
+  });
+
+  const createCar = (e) => {
+    e.preventDefault();
+    //validation
+
+    const payload = {
+    brand: inputs.brand.trim(),
+    model: inputs.model.trim(),
+    description: inputs.description.trim(),
+    year: inputs.year.trim(),
+    imageUrl: inputs.imageUrl.trim(),
+    price: inputs.price.trim()
+    }
+
+    carService.create(payload)
+    .then(navigate('/cars'));
+  };
+
+  return (
+    <section id="create-listing">
+      <div className="container">
+        <form id="create-form" onSubmit={createCar}>
+          <h1>Create Car Listing</h1>
+          <p>Please fill in this form to create an listing.</p>
+          <hr />
+          <p>Car Brand</p>
+          <input
+            onChange={(e) => onInputChange(e, setInputs)}
+            value={inputs.brand}
+            type="text"
+            placeholder="Enter Car Brand"
+            name="brand"
+          />
+          <p>Car Model</p>
+          <input
+            onChange={(e) => onInputChange(e, setInputs)}
+            value={inputs.model}
+            type="text"
+            placeholder="Enter Car Model"
+            name="model"
+          />
+          <p>Description</p>
+          <input
+            onChange={(e) => onInputChange(e, setInputs)}
+            value={inputs.description}
+            type="text"
+            placeholder="Enter Description"
+            name="description"
+          />
+          <p>Car Year</p>
+          <input
+            onChange={(e) => onInputChange(e, setInputs)}
+            value={inputs.year}
+            type="number"
+            placeholder="Enter Car Year"
+            name="year"
+          />
+          <p>Car Image</p>
+          <input
+            onChange={(e) => onInputChange(e, setInputs)}
+            value={inputs.imageUrl}
+            type="text"
+            placeholder="Enter Car Image"
+            name="imageUrl"
+          />
+          <p>Car Price</p>
+          <input
+            onChange={(e) => onInputChange(e, setInputs)}
+            value={inputs.price}
+            type="number"
+            placeholder="Enter Car Price"
+            name="price"
+          />
+          <hr />
+          <input
+            type="submit"
+            className="registerbtn"
+            defaultValue="Create Listing"
+          />
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default Create;
