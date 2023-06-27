@@ -9,8 +9,8 @@ const Login = () => {
   const navigate = useNavigate()
 
   const [inputs, setInputs] = useState({
-    username: null,
-    password: null,
+    username: '',
+    password: '',
   });
 
   const logInSubmit = (e) => {
