@@ -1,11 +1,17 @@
-import { useState } from "react";
-import * as authService from '../../services/authSrvice'
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import * as authService from "../../services/authSrvice";
+import { UserContext } from "../../Contexts/UserContext";
 
 const Register = () => {
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({
-    username: '',
-    password: '',
-    rePass: '',
+    username: "",
+    password: "",
+    rePass: "",
   });
 
   const inputChange = (e) => {
@@ -16,15 +22,22 @@ const Register = () => {
   const registerUser = (e) => {
     e.preventDefault();
 
-    if (inputs.password !== inputs.rePass ) {
-      return alert("Sorry, passwords mismatch!")
+    if (inputs.password !== inputs.rePass) {
+      return alert("Sorry, passwords mismatch!");
     }
-   
-    authService.register()
-    .then(res => console.log(res))
 
+    const payload = {
+      username: inputs.username.trim(),
+      password: inputs.password.trim()
+    }
+
+    authService.register(payload)
+    .then((res) => {
+      setUser(res);
+      navigate("/cars");
+    })
+    .catch(err => alert(err.message))
   };
-
 
   return (
     <section id="register">
@@ -55,7 +68,7 @@ const Register = () => {
           <input
             type="password"
             placeholder="Repeat Password"
-            name="repeatPass"
+            name="rePass"
             required=""
             value={inputs.rePass}
             onChange={inputChange}

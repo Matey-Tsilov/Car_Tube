@@ -10,9 +10,9 @@ const Header = () => {
   const { user, setUser } = useContext(UserContext);
 
   const logoutUser = () => {
-    const bool = window.confirm("Do you really want to log out?");
+    const confirmation = window.confirm("Do you really want to log out?");
 
-    if (bool) {
+    if (confirmation) {
       authApi.logout();
       setUser({})
       navigate('/')
