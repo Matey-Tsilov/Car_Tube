@@ -16,7 +16,12 @@ const Login = () => {
   const logInSubmit = (e) => {
     e.preventDefault();
 
-    authApi.login(inputs)
+    const payload = {
+      username: inputs.username.trim(),
+      password: inputs.password.trim()
+    }
+
+    authApi.login(payload)
     .then((res) => {
       setUser(res)
       navigate('/cars')
