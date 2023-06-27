@@ -29,6 +29,8 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin-right: 60px;
+    margin-bottom: 30px;
 }
 
 .details-info {
