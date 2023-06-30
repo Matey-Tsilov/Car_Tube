@@ -4,9 +4,9 @@ const ep = {
     getAll: '/data/cars',
     getById: '/data/cars/',
     create: '/data/cars',
-    // edit: '/data/cars/',
+    edit: '/data/cars/',
+    userCars: (userId) => `/data/cars?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`,
     // delete: '/data/cars/',
-    // userCars: (userId) => `/data/cars?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
 
 }
 
@@ -18,4 +18,10 @@ export async function getById(id) {
 }
 export async function create(carInfo) {
     return fetchApi.post(ep.create, carInfo)
+}
+export async function edit(id, data){
+    return fetchApi.put(`${ep.edit}/${id}`, data)
+}
+export async function getMine(id){
+    return fetchApi.get(`${ep.userCars(id)}`)
 }

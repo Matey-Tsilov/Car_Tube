@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom"
 
 import { getById } from "../../services/carService"
 
-
 const Details = () => {
   const {id} = useParams()
   const [car, setCar] = useState({})

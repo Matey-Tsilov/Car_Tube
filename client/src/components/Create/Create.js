@@ -29,7 +29,7 @@ const Create = () => {
     }
 
     carService.create(payload)
-    .then(navigate('/cars'));
+    .then(navigate('/cars')) ;
   };
 
   return (
