@@ -15,35 +15,34 @@ import { Routes, Route } from "react-router-dom";
 import { UserContext } from "./Contexts/UserContext";
 import { useSessionStorage } from "./Hooks/useSessionStorage";
 
+import Confirm from "./components/Common/Confirm";
+
 function App() {
-  const [user, setUser] = useSessionStorage({})
+  const [user, setUser] = useSessionStorage({});
 
   return (
     <>
-    <UserContext.Provider value={{user, setUser}}>
-      <Header />
+      <UserContext.Provider value={{ user, setUser }}>
+        <Header />
 
-      <main id="site-content">
-        <Routes>
+        <Confirm />
+        <main id="site-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/user/login" element={<Login />} />
+            <Route path="/user/register" element={<Register />} />
+            <Route path="/cars" element={<Catalog />} />
+            <Route path="/cars/create" element={<Create />} />
+            <Route path="/cars/edit/:id" element={<Edit />} />
+            <Route path="/cars/:id" element={<Details />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/my-listings" element={<MyListings />} />
+          </Routes>
+        </main>
 
-          <Route path = "/" element={<Home />} />
-          <Route path = "/user/login" element={<Login />} />
-          <Route path = "/user/register" element={<Register />} />
-          <Route path = "/cars" element={<Catalog />} />
-          <Route path = "/cars/create" element={<Create />} />
-          <Route path = "/cars/edit/:id" element={<Edit />} />
-          <Route path = "/cars/:id" element={<Details />} />
-          <Route path = "/search" element={<Search />} />
-          <Route path = "/my-listings" element={<MyListings />} />
-
-        </Routes>
-        
-      </main>
-
-      <Footer />
+        <Footer />
       </UserContext.Provider>
     </>
-    
   );
 }
 

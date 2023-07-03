@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import * as carService from "../../services/carService";
 import Car from "../Catalog/Car/Car";
@@ -6,6 +6,10 @@ import Car from "../Catalog/Car/Car";
 const Search = () => {
   const myRef = useRef();
   const [results, setResults] = useState([]);
+
+useEffect(() => {
+  carService.getAll().then((res) => setResults(res));
+}, [])
 
   const submitSearch = (e) => {
     e.preventDefault();
