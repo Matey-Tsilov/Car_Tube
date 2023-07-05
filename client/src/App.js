@@ -15,8 +15,6 @@ import { Routes, Route } from "react-router-dom";
 import { UserContext } from "./Contexts/UserContext";
 import { useSessionStorage } from "./Hooks/useSessionStorage";
 
-import Confirm from "./components/Common/Confirm";
-
 function App() {
   const [user, setUser] = useSessionStorage({});
 
@@ -24,8 +22,6 @@ function App() {
     <>
       <UserContext.Provider value={{ user, setUser }}>
         <Header />
-
-        <Confirm />
         <main id="site-content">
           <Routes>
             <Route path="/" element={<Home />} />
