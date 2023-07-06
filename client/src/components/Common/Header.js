@@ -3,7 +3,6 @@ import { useContext } from "react";
 
 import { UserContext } from "../../Contexts/UserContext";
 import * as authApi from "../../services/authSrvice";
-import { getUserData } from "../../api/util";
 
 const Header = () => {
   const navigate = useNavigate();

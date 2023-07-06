@@ -14,6 +14,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { UserContext } from "./Contexts/UserContext";
 import { useSessionStorage } from "./Hooks/useSessionStorage";
+import { PrivateGuard } from "./RouteGuards/private";
 
 function App() {
   const [user, setUser] = useSessionStorage({});
@@ -28,11 +29,15 @@ function App() {
             <Route path="/user/login" element={<Login />} />
             <Route path="/user/register" element={<Register />} />
             <Route path="/cars" element={<Catalog />} />
-            <Route path="/cars/create" element={<Create />} />
-            <Route path="/cars/edit/:id" element={<Edit />} />
             <Route path="/cars/:id" element={<Details />} />
             <Route path="/search" element={<Search />} />
+
+        <Route element={<PrivateGuard />}>
+            <Route path="/cars/create" element={<Create />} />
+            <Route path="/cars/edit/:id" element={<Edit />} />        
             <Route path="/my-listings" element={<MyListings />} />
+        </Route>
+            
           </Routes>
         </main>
 
