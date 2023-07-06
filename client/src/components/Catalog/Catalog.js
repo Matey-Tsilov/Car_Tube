@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { getAll } from "../../services/carService"
+import { usePreloader } from "../Common/Preloader"
 
 import Car from "./Car/Car"
 
@@ -12,7 +13,9 @@ const Catalog = () => {
    .then(all => setCars(all))
   }, [])
 
-    return (<section id="car-listings">
+    return (
+    
+    <section id="car-listings">
     <h1>Car Listings</h1>
     <div className="listings">
       {
