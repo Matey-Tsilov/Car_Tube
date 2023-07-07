@@ -25,6 +25,6 @@ export async function register(userData) {
 
 }
 
-export function logout() {
+export async function logout() {
     fetchApi.get('/users/logout')
 }

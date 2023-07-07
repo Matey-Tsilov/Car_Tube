@@ -8,13 +8,13 @@ const Header = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
-  const logoutUser = () => {
+  const logoutUser = async() => {
     const confirmation = window.confirm("Do you really want to log out?");
 
     if (confirmation) {
-      authApi.logout();
+      await authApi.logout();
       setUser({})
-      navigate('/')
+      navigate('/cars', {replace: true})
     }
 
   };
