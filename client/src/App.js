@@ -14,10 +14,12 @@ const Home = lazy(() => {
     setTimeout(() => resolve(import("./components/Home/Home")), 1000);
   });
 });
+const Catalog = lazy(() => new Promise(resolve => {
+  setTimeout(() => resolve(import("./components/Catalog/Catalog")), 1000)
+}));
 
 const Login = lazy(() => import("./components/Login/Login"));
 const Register = lazy(() => import("./components/Register/Register"));
-const Catalog = lazy(() => import("./components/Catalog/Catalog"));
 const Create = lazy(() => new Promise(resolve => {
   setTimeout(() => resolve(import("./components/Create/Create")), 1000)
 }));
