@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { onInputChange } from "../../api/controlledForm";
 import * as carService from "../../services/carService";
+import { ValidatedInput } from "../Common/ValidatedInput/ValidatedInput";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Create = () => {
     model: "",
     description: "",
     year: "",
-    imageUrl: "",
+    imageUrl: "", 
     price: "",
   });
 
@@ -40,7 +41,7 @@ const Create = () => {
           <p>Please fill in this form to create an listing.</p>
           <hr />
           <p>Car Brand</p>
-          <input
+          <ValidatedInput
             onChange={(e) => onInputChange(e, setInputs)}
             value={inputs.brand}
             type="text"
@@ -48,15 +49,15 @@ const Create = () => {
             name="brand"
           />
           <p>Car Model</p>
-          <input
+          <ValidatedInput
             onChange={(e) => onInputChange(e, setInputs)}
             value={inputs.model}
-            type="text"
-            placeholder="Enter Car Model"
-            name="model"
+            type={"text"}
+            placeholder={"Enter Car Model"}
+            name={"model"}
           />
           <p>Description</p>
-          <input
+          <ValidatedInput
             onChange={(e) => onInputChange(e, setInputs)}
             value={inputs.description}
             type="text"
@@ -64,7 +65,7 @@ const Create = () => {
             name="description"
           />
           <p>Car Year</p>
-          <input
+          <ValidatedInput
             onChange={(e) => onInputChange(e, setInputs)}
             value={inputs.year}
             type="number"
@@ -72,7 +73,7 @@ const Create = () => {
             name="year"
           />
           <p>Car Image</p>
-          <input
+          <ValidatedInput
             onChange={(e) => onInputChange(e, setInputs)}
             value={inputs.imageUrl}
             type="text"
@@ -80,7 +81,7 @@ const Create = () => {
             name="imageUrl"
           />
           <p>Car Price</p>
-          <input
+          <ValidatedInput
             onChange={(e) => onInputChange(e, setInputs)}
             value={inputs.price}
             type="number"
