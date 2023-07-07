@@ -6,7 +6,6 @@ export const ValidatedInput = ({type, name, placeholder, defaultValue, value, on
 
     }
 
-
     return (
 
     <input 

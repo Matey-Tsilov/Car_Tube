@@ -9,20 +9,19 @@ import { Preloader } from "./components/Common/Preloader";
 
 const Header = lazy(() => import("./components/Common/Header"));
 const Footer = lazy(() => import("./components/Common/Footer"));
-const Home = lazy(() => {
-  return new Promise(resolve => {
+
+const Home = lazy(() =>  new Promise(resolve => {
     setTimeout(() => resolve(import("./components/Home/Home")), 1000);
-  });
-});
+}));
 const Catalog = lazy(() => new Promise(resolve => {
   setTimeout(() => resolve(import("./components/Catalog/Catalog")), 1000)
+}));
+const Create = lazy(() => new Promise(resolve => {
+  setTimeout(() => resolve(import("./components/Create/Create")), 1000)
 }));
 
 const Login = lazy(() => import("./components/Login/Login"));
 const Register = lazy(() => import("./components/Register/Register"));
-const Create = lazy(() => new Promise(resolve => {
-  setTimeout(() => resolve(import("./components/Create/Create")), 1000)
-}));
 const Edit = lazy(() => import("./components/Edit/Edit"));
 const Search = lazy(() => import("./components/Search/Search"));
 const Details = lazy(() => import("./components/Catalog/Details"));

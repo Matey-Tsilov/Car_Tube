@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { getAll } from "../../services/carService"
-import { usePreloader } from "../Common/Preloader"
 
 import Car from "./Car/Car"
 

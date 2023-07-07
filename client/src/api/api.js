@@ -16,7 +16,6 @@ async function request(url, options) {
          if (res.status == 204) {
              return res
         }
-        // return res.json()
 
         return await res.json()
 

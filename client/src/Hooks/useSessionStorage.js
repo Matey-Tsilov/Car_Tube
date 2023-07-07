@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { clearUserData, getUserData, setUserData } from '../api/util';
 
+//"refreshproof" useState for the currently logged in user!
 export const useSessionStorage = (defaultUser) => {
   //Towa se izpylnqwa edinstweno i samo pyrwiq pyt pri zarejdane!
     const [curUser, setCurUser] = useState(() => {

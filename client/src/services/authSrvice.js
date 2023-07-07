@@ -20,7 +20,6 @@ export async function register(userData) {
     }
     const serverRes = await fetchApi.post('/users/register', newUser)
     
-    //така ще можем по-лесно да взимаме колко миима е написал, за да визуализираме бройката в userProfile view
     return serverRes
 
 }
