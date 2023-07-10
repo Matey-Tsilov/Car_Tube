@@ -4,6 +4,8 @@ const collectionService = require('../services/collectionService')
 const mongooseErrorMapper = require('../utils/mongooseErrorMapper')
 
 router.get('/cars', async (req, res) => {
+    const queryString = req.query
+    console.log(queryString);
     try {
         const items = await collectionService.getAll()
         res.json(items)
