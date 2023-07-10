@@ -14,7 +14,7 @@ exports.login = async (email, password) => {
 const existing = await User.findOne({email})
 const isSame = await bcrypt.compare(password, existing?.password)
 if (!existing) {
-  throw new Error('Incorrect email or password!')
+  throw new Error('An account like that already exists!')
 }
 if (!isSame) {
   throw new Error('Incorrect email or password!')
