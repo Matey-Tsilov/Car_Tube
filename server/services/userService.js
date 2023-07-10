@@ -10,8 +10,8 @@ exports.register = async (userData) => {
   //use registeredUser not userData to extract the _id proerty!
   return await generateSession(registeredUser)
 }
-exports.login = async (email, password) => {
-const existing = await User.findOne({email})
+exports.login = async (username, password) => {
+const existing = await User.findOne({username})
 const isSame = await bcrypt.compare(password, existing?.password)
 if (!existing) {
   throw new Error('An account like that already exists!')
@@ -33,14 +33,14 @@ exports.validateToken = async (token) => {
 exports.logout = (token) => blackList.push(token)
 
 async function generateSession(user) {
-    const payload = { _id: user._id, username: user.username, email: user.email };
+    const payload = { _id: user._id, username: user.username };
     const options = {expiresIn: '2d'}
   
     //use promisified version
     const token = await jwt.sign(payload, SECRET, options)
   
   return {
-    email: user.email, 
+    username: user.username, 
     _id: user._id,
     accessToken: token
   }

@@ -18,8 +18,8 @@ const carSchema = new mongoose.Schema({
   },
   year: {
     type: Number,
-    min: [100, 'Car year must be between 1950 and 2050'],
-    max: [999, 'Car year must be between 1950 and 2050']
+    min: [1950, 'Car year must be between 1950 and 2050'],
+    max: [2050, 'Car year must be between 1950 and 2050']
   },
   price: {
     type: Number,
