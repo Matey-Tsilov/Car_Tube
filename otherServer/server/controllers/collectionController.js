@@ -3,7 +3,7 @@ const { isUser, isOwner } = require('../middlewares/guards')
 const collectionService = require('../services/collectionService')
 const mongooseErrorMapper = require('../utils/mongooseErrorMapper')
 
-router.get('/', async (req, res) => {
+router.get('/cars', async (req, res) => {
     try {
         const items = await collectionService.getAll()
         res.json(items)
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         res.status(404).json({message: errorMsg})
     }
 })
-router.get('/:id', async (req, res) => {
+router.get('/cars/:id', async (req, res) => {
     const id = req.params.id
     try {
         const item = await collectionService.getById(id)
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
         res.status(404).json({message: errorMsg})
     }
 })
-router.post('/', isUser(), async (req, res) => {
+router.post('/cars', isUser(), async (req, res) => {
     const body = req.body
     body._ownerId = req.user._id
     try {
@@ -33,7 +33,7 @@ router.post('/', isUser(), async (req, res) => {
         res.status(404).json({message: errorMsg})
     }
 })
-router.put('/:id', isUser(), isOwner(collectionService), async (req, res) => {
+router.put('/cars/:id', isUser(), isOwner(collectionService), async (req, res) => {
     const id = req.params.id
     const updatedItem = req.body
     try {
@@ -44,7 +44,7 @@ router.put('/:id', isUser(), isOwner(collectionService), async (req, res) => {
         res.status(404).json({message: errorMsg})
     }
 })
-router.delete('/:id', isUser(), isOwner(collectionService), async (req, res) => {
+router.delete('/cars/:id', isUser(), isOwner(collectionService), async (req, res) => {
     const id = req.params.id
     try {
         const result = await collectionService.deleteById(id)
