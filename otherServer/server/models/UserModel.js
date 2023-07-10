@@ -10,12 +10,6 @@ const userSchema = new mongoose.Schema({
     minLength: [5, 'The username should be atleast 5 characters long!']
     //add custom msgs: [true, 'Username field is mandatory!']
   },
-  email: {
-    type: String,
-    required: [true, 'The email is required!'],
-    unique: [true, 'Email is already taken'],
-    minLength: [10, 'The email should be atleast 10 characters long!']
-  },
   password: {
     type: String,
     required: [true, 'The password is required!'],
