@@ -3,10 +3,10 @@ const userService = require("../services/userService");
 const mongooseErrorMapper = require('../utils/mongooseErrorMapper')
 
 router.post("/login", async (req, res) => {
-  const {email, password} = req.body;
+  const {username, password} = req.body;
 
   try {
-    const session = await userService.login(email, password)
+    const session = await userService.login(username, password)
     res.json(session);
   } catch (error) {
     const errorMsg = mongooseErrorMapper(error);
