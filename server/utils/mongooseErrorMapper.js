@@ -7,7 +7,7 @@ module.exports = (err) => {
     return mongooseError
   //if email already has a duplicate value
   }else if(err.name == "MongoServerError") {
-   return 'Email is already taken!'
+   return 'Username is already taken!'
   }
   //if it is a normal error
   else {
