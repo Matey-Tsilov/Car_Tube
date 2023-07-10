@@ -1,5 +1,4 @@
 import * as fetchApi from '../api/api'
-import { clearUserData } from '../api/util'
 
 export async function login(userData) {
 
