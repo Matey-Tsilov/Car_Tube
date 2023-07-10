@@ -38,6 +38,7 @@ const Register = () => {
       setUser(res);
       navigate("/cars");
     })
+    //that way we catch error from the Back-end too!
     .catch(err => alert(err.message))
   };
 
