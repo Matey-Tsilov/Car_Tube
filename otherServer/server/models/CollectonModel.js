@@ -1,17 +1,34 @@
 const mongoose = require("mongoose");
 
-const collectionSchema = new mongoose.Schema({
+const carSchema = new mongoose.Schema({
   //example properties with mongooseValidations
   //Change when doing a project!
-  name: {
+  brand: {
+    type: String,
+    required: [true, 'This property is required!']
+  },
+  model: {
+    type: String,
+    required: [true, 'This property is required!']
+  },
+  description: {
     type: String,
     required: [true, 'This property is required!'],
-    minLength: [5, "The name should be more than 5 symbols"]
+    minLength: [20, "The name should be more than 20 symbols"]
   },
-  pages: {
+  year: {
     type: Number,
-    min: [100, 'Book pages must be between 100 and 999 pages'],
-    max: [999, 'Book pages must be between 100 and 999 pages']
+    min: [100, 'Car year must be between 1950 and 2050'],
+    max: [999, 'Car year must be between 1950 and 2050']
+  },
+  price: {
+    type: Number,
+    min: [10, 'Car price must be between 10 and 9 999 999 $'],
+    max: [9999999, 'Car price must be between 10 and 9 999 999 $']
+  },
+  imageUrl: {
+    type: String,
+    required: [true, 'This property is required!']
   },
   _ownerId: {
    type: mongoose.Types.ObjectId,
@@ -19,6 +36,6 @@ const collectionSchema = new mongoose.Schema({
   }
 });
 
-const Collection = mongoose.model("Collection", collectionSchema);
+const Collection = mongoose.model("Car", carSchema);
 
 module.exports = Collection;
