@@ -5,7 +5,7 @@ module.exports = (err) => {
     .map(err => err.properties.message)
     .join('\n')
     return mongooseError
-  //if email already has a duplicate value
+  //if name already has a duplicate value// the so called duplicateerror
   }else if(err.name == "MongoServerError") {
    return 'Username is already taken!'
   }
