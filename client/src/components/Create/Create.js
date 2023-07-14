@@ -30,7 +30,8 @@ const Create = () => {
     }
 
     carService.create(payload)
-    .then(navigate('/cars')) ;
+    .then(navigate('/cars'))
+    .catch(err => alert(err.message))
   };
 
   return (

@@ -14,7 +14,7 @@ const carSchema = new mongoose.Schema({
   description: {
     type: String,
     required: [true, 'This property is required!'],
-    minLength: [20, "The name should be more than 20 symbols"]
+    minLength: [20, "The description should be more than 20 symbols"]
   },
   year: {
     type: Number,

@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, 'The username is required!'],
-    minLength: [5, 'The username should be atleast 5 characters long!']
+    minLength: [5, 'The username should be atleast 5 characters long!'],
+    unique: [true, "The username need to be unique, sorry!"]
     //add custom msgs: [true, 'Username field is mandatory!']
   },
   password: {

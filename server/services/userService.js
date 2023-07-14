@@ -7,15 +7,15 @@ const blackList = [];
 
 exports.register = async (userData) => {
   const registeredUser = await User.create(userData);
-  //use registeredUser not userData to extract the _id proerty!
+
   return await generateSession(registeredUser);
 };
 exports.login = async (username, password) => {
   const existing = await User.findOne({ username });
-  const isSame = await bcrypt.compare(password, existing?.password);
   if (!existing) {
-    throw new Error("An account like that already exists!");
+    throw new Error("An account like that doesn't exists!");
   }
+  const isSame = await bcrypt.compare(password, existing?.password);
   if (!isSame) {
     throw new Error("Incorrect email or password!");
   }
