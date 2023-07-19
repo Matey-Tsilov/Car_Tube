@@ -8,7 +8,7 @@ async function request(url, options) {
     try {
         const res = await fetch(host + url, options)
 
-        if (!res.ok) {
+        if (!res?.ok) {
         const problem = await res.json()
         throw new Error(problem.message)
         }

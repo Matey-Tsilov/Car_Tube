@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 const Car = ({car}) => {
-    return (<div className="listing">
+    return (<div className="listing" id="car">
     <div className="preview">
       <img src={car.imageUrl} alt="car" />
     </div>
